@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project HomePage</title>
+    <style>
+    header{
+        background-color: aqua;
+        padding: 20px;
+        text-align: center;
+        font-size: 30px;
+        color: black;
+    } 
+    .results{
+        background-color: aqua;
+        padding: 10px;
+        text-align: center;
+        font-size: 30px;
+        color: black;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Major Project</h1>
+        <p>Multiple Linear Regression</p>
+    </header>
+    <div>
+        <h3>Dataset: Student Performance</h3>
+        <div>
+            <table>
+            {{ table_df | safe}}
+            </table>
+        </div>
+        <ul>
+            <li>Pre Processed</li>
+            <li>ML Modelling</li>
+            <li>Training</li>
+            <li>Testing</li>
+            <li>Ready</li>
+        </ul>
+        <div>
+            <form action="/predict" method="post">
+                <!--Hours Studied	Previous Scores 	Extracurricular Activities   Sleep Hours	Sample Question Papers Practiced	Performance Index-->
+                <label for="hours">Hours Studied: </label>
+                <input type="number" id="hours" name="hours" min="0" max="24" value="0">
+                <br><br>
+                <label for="scores">Previous Scores: </label>
+                <input type="number" id="scores" name="scores" min="0" max="100" value="0">
+                <br><br>
+                <label>Extracurricular Activities: </label>
+                <!--<input type="radio" id="yes" name="yes" value="1"><label for="yes">Yes</label>
+                <input type="radio" id="no" name="no" value="1">-->
+                <input type="number" id="activities" name="activities" min="0" max="100" value="0">
+                <br><br>
+                <label for="sleep">Sleep Hours: </label>
+                <input type="number" id="sleep" name="sleep" min="0" max="24" value="0">
+                <br><br>
+                <label for="papers">Sample Question Papers Practiced: </label>
+                <input type="number" id="papers" name="papers" min="0" max="100" value="0">
+                <br><br>
+                <button type="submit">Predict</button>
+
+            </form>
+            <div class ="results">Results : <p>{{prediction}}</p></div>
+        </div>
+    </div>
+</body>
+</html>
